@@ -1,14 +1,14 @@
 <template>
   <div class="text-xs-center">
-    <h1>{{cocktail.strDrink}}</h1>
-    <v-img :src="cocktail.strDrinkThumb" alt="Cocktail"></v-img>
-    <h2>Type of Glass:</h2>
-    <p>{{cocktail.strGlass}}</p>
-    <h2>How to prepare:</h2>
-    <p>{{cocktail.strInstructions}}</p>
-    <h2>Ingredients:</h2>
-    <router-link to="/SpiritDetail">
-      <p>{{cocktail.strIngredient1}}</p>
+    <h1>The Cocktail Website</h1>
+    <p
+      class="margins"
+    >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent interdum pharetra nulla, at tristique nulla tempus sed. Quisque maximus sed ipsum non vestibulum. Pellentesque vel ex lobortis, aliquet augue ut, luctus nunc. Sed consequat libero sed nibh ullamcorper, id facilisis lorem finibus. Fusce nibh mi, hendrerit et bibendum in, lobortis ut ligula. Fusce a ornare magna. Nam id tellus id libero semper gravida. Nulla ut est risus. Vivamus blandit auctor ex at elementum. Vivamus est erat, aliquam in blandit nec, mattis vel urna. Suspendisse eu felis ex. Aliquam purus est, fringilla quis consectetur sit amet, placerat a nunc. Phasellus interdum pretium blandit.</p>
+    <h2>Random Cocktail of the day!</h2>
+    <p>(Click on the image for details)</p>
+    <h3>{{ cocktail.strDrink }}</h3>
+    <router-link to="/CocktailDetail">
+      <v-img :src="cocktail.strDrinkThumb" alt="Cocktail"></v-img>
     </router-link>
   </div>
 </template>
@@ -80,4 +80,8 @@ export default {
 </script>
 
 <style>
+.margins {
+  margin-right: 10px;
+  margin-left: 10px;
+}
 </style>

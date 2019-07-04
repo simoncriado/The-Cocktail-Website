@@ -1,16 +1,16 @@
 <template>
-  <div class="home">
-    <NavBar msg="Welcome to Your Vue.js App" />
+  <div>
+    <HomeInfo></HomeInfo>
   </div>
 </template>
 
 <script>
-import NavBar from "@/components/NavBar.vue";
+import HomeInfo from "@/components/HomeInfo.vue";
 
 export default {
   name: "home",
   components: {
-    NavBar
+    HomeInfo
   }
 };
 </script>
