@@ -1,15 +1,19 @@
 <template>
   <div class="text-xs-center">
-    <h1>{{cocktail.strDrink}}</h1>
-    <v-img :src="cocktail.strDrinkThumb" alt="Cocktail"></v-img>
+    <h1>{{cocktailDetails.strDrink}}</h1>
+    <v-img :src="cocktailDetails.strDrinkThumb" alt="Cocktail"></v-img>
     <h2>Type of Glass:</h2>
-    <p>{{cocktail.strGlass}}</p>
+    <p>{{cocktailDetails.strGlass}}</p>
     <h2>How to prepare:</h2>
-    <p>{{cocktail.strInstructions}}</p>
+    <p>{{cocktailDetails.strInstructions}}</p>
     <h2>Ingredients:</h2>
-    <router-link to="/SpiritDetail">
-      <p>{{cocktail.strIngredient1}}</p>
-    </router-link>
+    <div>
+      <router-link to="/SpiritDetail">
+        <ul>
+          <li v-for="(ingredient, index) in ingredients" :key="index">{{ingredient}} {{measure}}</li>
+        </ul>
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -17,67 +21,44 @@
 export default {
   data() {
     return {
-      cocktail: {
-        idDrink: "11118",
-        strDrink: "Blue Margarita",
-        strDrinkAlternate: null,
-        strDrinkES: null,
-        strDrinkDE: null,
-        strDrinkFR: null,
-        "strDrinkZH-HANS": null,
-        "strDrinkZH-HANT": null,
-        strTags: null,
-        strVideo: null,
-        strCategory: "Ordinary Drink",
-        strIBA: null,
-        strAlcoholic: "Alcoholic",
-        strGlass: "Cocktail glass",
-        strInstructions:
-          "Rub rim of cocktail glass with lime juice. Dip rim in coarse salt. Shake tequila, blue curacao, and lime juice with ice, strain into the salt-rimmed glass, and serve.",
-        strInstructionsES: null,
-        strInstructionsDE: null,
-        strInstructionsFR: null,
-        "strInstructionsZH-HANS": null,
-        "strInstructionsZH-HANT": null,
-        strDrinkThumb:
-          "https://www.thecocktaildb.com/images/media/drink/qtvvyq1439905913.jpg",
-        strIngredient1: "Tequila",
-        strIngredient2: "Blue Curacao",
-        strIngredient3: "Lime juice",
-        strIngredient4: "Salt",
-        strIngredient5: "",
-        strIngredient6: "",
-        strIngredient7: "",
-        strIngredient8: "",
-        strIngredient9: "",
-        strIngredient10: "",
-        strIngredient11: "",
-        strIngredient12: "",
-        strIngredient13: "",
-        strIngredient14: "",
-        strIngredient15: "",
-        strMeasure1: "1 1/2 oz ",
-        strMeasure2: "1 oz ",
-        strMeasure3: "1 oz ",
-        strMeasure4: "Coarse ",
-        strMeasure5: " ",
-        strMeasure6: " ",
-        strMeasure7: " ",
-        strMeasure8: " ",
-        strMeasure9: " ",
-        strMeasure10: "",
-        strMeasure11: "",
-        strMeasure12: "",
-        strMeasure13: "",
-        strMeasure14: "",
-        strMeasure15: "",
-        strCreativeCommonsConfirmed: "No",
-        dateModified: "2015-08-18 14:51:53"
-      }
+      cocktailDetails: [],
+      ingredients: [],
+      measures: []
     };
+  },
+  methods: {
+    getCocktailDetails() {
+      fetch(
+        "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11007",
+        {}
+      )
+        .then(res => res.json())
+        .then(json => {
+          this.getIngredients(json.drinks[0]);
+          this.cocktailDetails = json.drinks[0];
+        });
+    },
+    getIngredients(cocktail) {
+      for (let key in cocktail) {
+        if (key.includes("strIngredient") && cocktail[key].length != 0) {
+          this.ingredients.push(cocktail[key]);
+        } else if (key.includes("strMeasure") && cocktail[key].length != 0) {
+          this.measures.push(cocktail[key]);
+        }
+      }
+    },
+    reloadButton() {
+      return cocktailDetails;
+    }
+  },
+  created() {
+    this.getCocktailDetails();
   }
 };
 </script>
 
 <style>
+.list {
+  display: flex;
+}
 </style>
