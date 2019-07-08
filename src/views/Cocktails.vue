@@ -1,5 +1,5 @@
 <template>
-  <h1>Cocktails</h1>
+  <h1>List of Cocktails</h1>
 </template>
 
 <script>

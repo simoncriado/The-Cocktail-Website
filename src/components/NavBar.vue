@@ -31,6 +31,10 @@
     </v-layout>
     <v-toolbar color="#009688">
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+      <v-btn depressed small color="rgb(49, 49, 49)" dark @click="$router.go(-1)">
+        <v-icon left>arrow_back</v-icon>
+        <span>Back</span>
+      </v-btn>
     </v-toolbar>
   </div>
 </template>
