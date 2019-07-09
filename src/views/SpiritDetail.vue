@@ -14,9 +14,9 @@ export default {
   data() {
     return {
       name: this.$route.params.name,
-      spiritName: [],
-      spiritType: [],
-      spiritDescription: []
+      spiritName: "",
+      spiritType: "",
+      spiritDescription: ""
     };
   },
   methods: {
@@ -27,6 +27,11 @@ export default {
         )
         .then(json => {
           this.spiritName = json.data.ingredients[0].strIngredient;
+          // this.spiritType =
+          //   json.data.ingredients[0].strType || `No information available`;
+          // this.spiritDescription =
+          //   json.data.ingredients[0].strDescription ||
+          //   `No information available`;
           if (json.data.ingredients[0].strType != null) {
             this.spiritType = json.data.ingredients[0].strType;
           } else {

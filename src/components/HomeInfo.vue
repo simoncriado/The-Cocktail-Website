@@ -20,8 +20,7 @@
 export default {
   data() {
     return {
-      cocktails: [],
-      reloadButton: []
+      cocktails: []
     };
   },
   methods: {
@@ -29,14 +28,14 @@ export default {
       fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php", {})
         .then(res => res.json())
         .then(json => (this.cocktails = json.drinks[0]));
+    },
+    reloadButton() {
+      this.getCocktails();
     }
-    // reloadButton() {
-    //   return getCocktails;
-    // }
   },
   created() {
     this.getCocktails();
-    // this.reloadButton();
+    this.reloadButton();
   }
 };
 </script>

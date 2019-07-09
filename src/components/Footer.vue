@@ -1,5 +1,5 @@
 <template>
-  <v-footer dark>
+  <v-footer fixed dark>
     <v-card class="flex" flat tile>
       <v-card-actions class="teal justify-center">
         &copy;2019 -
