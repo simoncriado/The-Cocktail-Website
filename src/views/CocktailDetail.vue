@@ -8,47 +8,53 @@
     <p>{{cocktailDetails.strInstructions}}</p>
     <h2>Ingredients:</h2>
     <div>
-      <router-link to="/SpiritDetail">
-        <ul>
-          <li v-for="(ingredient, index) in ingredients" :key="index">{{ingredient}} {{measure}}</li>
-        </ul>
-      </router-link>
+      <ul>
+        <li v-for="(ingredient, index) in ingredients" :key="index">
+          <router-link
+            v-bind:to="'/SpiritDetail/' + ingredient"
+          >{{ingredient}} -- {{measures[index]}}</router-link>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
-      cocktailDetails: [],
+      id: this.$route.params.id,
+      cocktailDetails: {},
       ingredients: [],
       measures: []
     };
   },
   methods: {
     getCocktailDetails() {
-      fetch(
-        "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11007",
-        {}
-      )
-        .then(res => res.json())
+      axios
+        .get(
+          `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${this.id}`
+        )
         .then(json => {
-          this.getIngredients(json.drinks[0]);
-          this.cocktailDetails = json.drinks[0];
+          this.cocktailDetails = json.data.drinks[0];
+          this.getIngredients(json.data.drinks[0]);
         });
     },
     getIngredients(cocktail) {
       for (let key in cocktail) {
-        if (key.includes("strIngredient") && cocktail[key].length != 0) {
+        if (
+          key.includes("strIngredient") &&
+          (cocktail[key] != null && cocktail[key].length != 0)
+        ) {
           this.ingredients.push(cocktail[key]);
-        } else if (key.includes("strMeasure") && cocktail[key].length != 0) {
+        } else if (
+          key.includes("strMeasure") &&
+          (cocktail[key] != null && cocktail[key].length != 0)
+        ) {
           this.measures.push(cocktail[key]);
         }
       }
-    },
-    reloadButton() {
-      return cocktailDetails;
     }
   },
   created() {

@@ -28,12 +28,12 @@ export default new Router({
       component: Spirits
     },
     {
-      path: '/SpiritDetail',
+      path: '/SpiritDetail/:name',
       name: 'SpiritDetail',
       component: SpiritDetail
     },
     {
-      path: '/CocktailDetail',
+      path: '/CocktailDetail/:id',
       name: 'CocktailDetail',
       component: CocktailDetail
     },

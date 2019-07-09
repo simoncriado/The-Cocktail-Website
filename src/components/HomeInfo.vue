@@ -7,7 +7,7 @@
     <h2>Random Cocktail of the day!</h2>
     <p>(Click on the image for details)</p>
     <h3>{{ cocktails.strDrink }}</h3>
-    <router-link to="/CocktailDetail">
+    <router-link v-bind:to="'/CocktailDetail/' + cocktails.idDrink">
       <v-img :src="cocktails.strDrinkThumb" alt="Cocktail"></v-img>
     </router-link>
     <v-btn small v-on:click="reloadButton" fab>
