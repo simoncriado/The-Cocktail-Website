@@ -1,14 +1,12 @@
 <template>
   <div class="text-xs-center">
-    <!-- <h1>{{$store.getters.getName}}</h1>
-    <button @click="change">Click</button>-->
     <h1>The Cocktail Website</h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent interdum pharetra nulla, at tristique nulla tempus sed. Quisque maximus sed ipsum non vestibulum. Pellentesque vel ex lobortis, aliquet augue ut, luctus nunc. Sed consequat libero sed nibh ullamcorper, id facilisis lorem finibus. Fusce nibh mi, hendrerit et bibendum in, lobortis ut ligula. Fusce a ornare magna. Nam id tellus id libero semper gravida. Nulla ut est risus. Vivamus blandit auctor ex at elementum. Vivamus est erat, aliquam in blandit nec, mattis vel urna. Suspendisse eu felis ex. Aliquam purus est, fringilla quis consectetur sit amet, placerat a nunc. Phasellus interdum pretium blandit.</p>
     <h2>Random Cocktail of the day!</h2>
     <p>(Click on the image for details)</p>
     <h3>{{ cocktails.strDrink }}</h3>
     <router-link v-bind:to="'/CocktailDetail/' + cocktails.idDrink">
-      <v-img :src="cocktails.strDrinkThumb" alt="Cocktail"></v-img>
+      <v-img class="randomImage" :src="cocktails.strDrinkThumb" alt="Cocktail"></v-img>
     </router-link>
     <v-btn small v-on:click="reloadButton" fab>
       <v-icon>replay</v-icon>
@@ -24,10 +22,6 @@ export default {
     };
   },
   methods: {
-    // change() {
-    //   console.log("dakjhsd");
-    //   this.$store.commit("setName", "Nuria");
-    // },
     getCocktails() {
       fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php", {})
         .then(res => res.json())
@@ -51,5 +45,8 @@ export default {
   padding-bottom: 40px;
   padding-right: 10px;
   padding-left: 10px;
+}
+.randomImage {
+  border-radius: 5px;
 }
 </style>

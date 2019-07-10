@@ -10,10 +10,6 @@
     <div>
       <ul>
         <li v-for="(ingredient, index) in ingredients" :key="index">
-          <!-- <v-img
-            :src="`https://www.thecocktaildb.com/images/ingredients/${ingredient}-Small.png`"
-            alt="Cocktail"
-          ></v-img>-->
           <router-link
             v-bind:to="'/SpiritDetail/' + ingredient"
           >{{ingredient}} -- {{measures[index]}}</router-link>

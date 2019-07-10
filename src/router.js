@@ -37,5 +37,9 @@ export default new Router({
       name: 'CocktailDetail',
       component: CocktailDetail
     },
-  ]
+  ],
+  scrollBehavior(to, from, savedPosition) {
+    return { x: 0, y: 0 };
+    // to DO!!! Mirar por qué me da errores con el to, from y savedPosition diciendo que no se refieren a nada
+  }
 })

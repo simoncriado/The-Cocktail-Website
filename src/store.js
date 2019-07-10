@@ -6,23 +6,27 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    name: "Simon",
-    cocktails: []
+    alcoholics: [],
+    nonAlcoholics: [],
   },
   getters: {
-    getName(state) {
-      return state.name;
-    }
   },
   mutations: {
-    setName(state, value) {
-      state.name = value
-    }
+    GET_ALC: (state, data) => {
+      state.alcoholics = data
+    },
+    GET_NON_ALC: (state, data) => {
+      state.nonAlcoholics = data
+    },
   },
   actions: {
-    getCocktails(context) {
+    getAlcoholics(context) {
       axios.get('https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic')
-        .then(res => context.state.cocktails = res.data.drinks);
+        .then(res => context.commit("GET_ALC", res.data.drinks))
+    },
+    getNonAlcoholics(context) {
+      axios.get('https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic')
+        .then(res => context.commit("GET_NON_ALC", res.data.drinks));
     }
   }
 })
