@@ -1,10 +1,14 @@
 <template>
   <div class="text-xs-center">
     <h1>{{spiritName}}</h1>
+    <v-img
+      :src="`https://www.thecocktaildb.com/images/ingredients/${name}-Medium.png`"
+      alt="Cocktail"
+    ></v-img>
     <h2>Type:</h2>
     <p>{{spiritType}}</p>
     <h2>Description:</h2>
-    <p class="margins">{{spiritDescription}}</p>
+    <p>{{spiritDescription}}</p>
   </div>
 </template>
 
