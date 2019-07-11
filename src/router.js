@@ -39,7 +39,11 @@ export default new Router({
     },
   ],
   scrollBehavior(to, from, savedPosition) {
-    return { x: 0, y: 0 };
-    // to DO!!! Mirar por qué me da errores con el to, from y savedPosition diciendo que no se refieren a nada
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve({ x: 0, y: 0 })
+      }, 500)
+    })
+    // to DO!!! Mirar que el backToTop sea smooth
   }
 })

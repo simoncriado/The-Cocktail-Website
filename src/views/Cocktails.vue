@@ -1,6 +1,7 @@
 <template>
   <div class="text-xs-center scroll-y">
     <h1>List of Cocktails</h1>
+    <searchBar></searchBar>
     <div class="cocktails">
       <div class="flexContainer" v-for="(cocktail, index) in cocktails" :key="index">
         <h4>{{cocktail.strDrink}}</h4>
@@ -10,14 +11,16 @@
         </router-link>
       </div>
       <v-btn
+        class="button"
         v-scroll="onScroll"
         v-show="fab"
-        fab
         dark
+        fab
         fixed
         bottom
         right
-        color="rgb(170, 59, 77)"
+        color="#009688"
+        border-color="black"
         @click="toTop"
       >
         <v-icon>keyboard_arrow_up</v-icon>
@@ -27,11 +30,16 @@
 </template>
 
 <script>
+import SearchBar from "@/components/SearchBar.vue";
+
 export default {
   data() {
     return {
       fab: false
     };
+  },
+  components: {
+    SearchBar
   },
   created() {
     this.$store.dispatch("getAlcoholics");
@@ -39,10 +47,20 @@ export default {
   },
   computed: {
     cocktails() {
-      return [
-        ...this.$store.state.alcoholics,
-        ...this.$store.state.nonAlcoholics
-      ];
+      var cocktails = this.$store.state.cocktails;
+      return cocktails.filter(cocktail => {
+        return cocktail.strDrink
+          .toLowerCase()
+          .includes(this.textFilter.toLowerCase());
+      });
+      // return this.$store.state.cocktails.filter(cocktail => {
+      //   return this.$store.state.cocktails.innerText
+      //     .toLowerCase()
+      //     .includes(this.textFilter().toLowerCase());
+      // });
+    },
+    textFilter() {
+      return this.$store.state.filter;
     }
   },
   methods: {
@@ -59,6 +77,11 @@ export default {
 </script>
 
 <style>
+/* .button {
+  border: solid;
+  border-color: black;
+} */
+/* Intentar poner el border del botón gris oscuro!!! (hay algo en el código que pone el border verde y no puedo sobreescribirlo...) */
 .cocktails {
   display: flex;
   flex-wrap: wrap;
@@ -71,6 +94,9 @@ export default {
   width: 150px;
 }
 .smallImages {
+  border: solid;
+  border-color: #009688;
+  border-width: 2px;
   border-radius: 5px;
   height: 150px;
 }

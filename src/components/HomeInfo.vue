@@ -8,7 +8,7 @@
     <router-link v-bind:to="'/CocktailDetail/' + cocktails.idDrink">
       <v-img class="randomImage" :src="cocktails.strDrinkThumb" alt="Cocktail"></v-img>
     </router-link>
-    <v-btn small v-on:click="reloadButton" fab>
+    <v-btn small v-on:click="reloadButton" color="#009688" fab>
       <v-icon>replay</v-icon>
     </v-btn>
   </div>
@@ -41,12 +41,15 @@ export default {
 <style>
 .text-xs-center {
   min-height: 100vh;
-  padding-top: 10px;
-  padding-bottom: 40px;
+  padding-top: 60px;
+  padding-bottom: 20px;
   padding-right: 10px;
   padding-left: 10px;
 }
 .randomImage {
+  border: solid;
+  border-color: #009688;
+  border-width: 2px;
   border-radius: 5px;
 }
 </style>

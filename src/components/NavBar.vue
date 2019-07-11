@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-layout wrap>
-      <v-navigation-drawer v-model="drawer" absolute temporary>
+      <v-navigation-drawer v-model="drawer" fixed temporary>
         <v-list class="pa-1">
           <v-list-tile avatar>
             <v-list-tile-avatar>
@@ -29,17 +29,19 @@
         </v-list>
       </v-navigation-drawer>
     </v-layout>
-    <v-toolbar color="#009688">
+    <v-toolbar fixed color="#009688">
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-btn
         v-if="$route.name != 'home'"
         depressed
+        fab
         small
         color="rgb(49, 49, 49)"
         dark
         @click="$router.go(-1)"
       >
         <v-icon left>arrow_back</v-icon>
+        <!-- Al poner fab se quita el span "back". No se que estilo me gusta mas... -->
         <span>Back</span>
       </v-btn>
     </v-toolbar>

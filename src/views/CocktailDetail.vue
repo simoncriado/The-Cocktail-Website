@@ -1,7 +1,7 @@
 <template>
   <div class="text-xs-center">
     <h1>{{cocktailDetails.strDrink}}</h1>
-    <v-img :src="cocktailDetails.strDrinkThumb" alt="Cocktail"></v-img>
+    <v-img class="randomImage" :src="cocktailDetails.strDrinkThumb" alt="Cocktail"></v-img>
     <h2>Type of Glass:</h2>
     <p>{{cocktailDetails.strGlass}}</p>
     <h2>How to prepare:</h2>
