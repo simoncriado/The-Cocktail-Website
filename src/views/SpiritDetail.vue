@@ -9,27 +9,40 @@
     <p>{{spiritType}}</p>
     <h2>Description:</h2>
     <p>{{spiritDescription}}</p>
+    <h2>Related Cocktails:</h2>
+    <cocktailsList :amount="name"></cocktailsList>
+    <backToTopButton></backToTopButton>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import backToTopButton from "@/components/backToTopButton.vue";
+import cocktailsList from "@/components/cocktailsList.vue";
+
 export default {
   data() {
     return {
       name: this.$route.params.name,
       spiritName: "",
       spiritType: "",
-      spiritDescription: ""
+      spiritDescription: "",
+      relatedCocktails: []
     };
+  },
+  components: {
+    backToTopButton,
+    cocktailsList
   },
   methods: {
     getSpiritDetails() {
+      console.log("get spirits method");
       axios
         .get(
           `https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${this.name}`
         )
         .then(json => {
+          console.log(json);
           this.spiritName = json.data.ingredients[0].strIngredient;
           // this.spiritType =
           //   json.data.ingredients[0].strType || `No information available`;

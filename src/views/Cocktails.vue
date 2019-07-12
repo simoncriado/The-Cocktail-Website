@@ -1,103 +1,28 @@
 <template>
-  <div class="text-xs-center scroll-y">
+  <div class="text-xs-center">
     <h1>List of Cocktails</h1>
     <searchBar></searchBar>
-    <div class="cocktails">
-      <div class="flexContainer" v-for="(cocktail, index) in cocktails" :key="index">
-        <h4>{{cocktail.strDrink}}</h4>
-        <router-link v-bind:to="'/CocktailDetail/' + cocktail.idDrink">
-          <img class="smallImages" :src="cocktail.strDrinkThumb" alt="Cocktail" />
-          <!-- To DO!!! Investigar el warning de la v-img(con sólo img no da el warning...) -->
-        </router-link>
-      </div>
-      <v-btn
-        class="button"
-        v-scroll="onScroll"
-        v-show="fab"
-        dark
-        fab
-        fixed
-        bottom
-        right
-        color="#009688"
-        border-color="black"
-        @click="toTop"
-      >
-        <v-icon>keyboard_arrow_up</v-icon>
-      </v-btn>
-    </div>
+    <cocktailsList amount="all"></cocktailsList>
+    <backToTopButton></backToTopButton>
   </div>
 </template>
 
 <script>
 import SearchBar from "@/components/SearchBar.vue";
+import backToTopButton from "@/components/backToTopButton.vue";
+import cocktailsList from "@/components/cocktailsList.vue";
 
 export default {
   data() {
-    return {
-      fab: false
-    };
+    return {};
   },
   components: {
-    SearchBar
-  },
-  created() {
-    this.$store.dispatch("getAlcoholics");
-    this.$store.dispatch("getNonAlcoholics");
-  },
-  computed: {
-    cocktails() {
-      var cocktails = this.$store.state.cocktails;
-      return cocktails.filter(cocktail => {
-        return cocktail.strDrink
-          .toLowerCase()
-          .includes(this.textFilter.toLowerCase());
-      });
-      // return this.$store.state.cocktails.filter(cocktail => {
-      //   return this.$store.state.cocktails.innerText
-      //     .toLowerCase()
-      //     .includes(this.textFilter().toLowerCase());
-      // });
-    },
-    textFilter() {
-      return this.$store.state.filter;
-    }
-  },
-  methods: {
-    onScroll(e) {
-      if (typeof window === "undefined") return;
-      const top = window.pageYOffset || e.target.scrollTop || 0;
-      this.fab = top > 20;
-    },
-    toTop() {
-      this.$vuetify.goTo(0);
-    }
+    SearchBar,
+    backToTopButton,
+    cocktailsList
   }
 };
 </script>
 
 <style>
-/* .button {
-  border: solid;
-  border-color: black;
-} */
-/* Intentar poner el border del botón gris oscuro!!! (hay algo en el código que pone el border verde y no puedo sobreescribirlo...) */
-.cocktails {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: flex-end;
-}
-.flexContainer {
-  display: block;
-  margin: 5px;
-  width: 150px;
-}
-.smallImages {
-  border: solid;
-  border-color: #009688;
-  border-width: 2px;
-  border-radius: 5px;
-  height: 150px;
-}
 </style>

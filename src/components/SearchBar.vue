@@ -1,6 +1,6 @@
 <template>
   <v-layout row wrap>
-    <v-flex xs12 sm6 md3>
+    <v-flex xs12 md3>
       <v-text-field
         background-color="#009688"
         color="#009688"
@@ -23,7 +23,8 @@ export default {
   },
   methods: {
     postInput() {
-      this.$store.commit("GET_IMPUT", this.search);
+      this.$store.commit("GET_INPUT", this.search);
+      //el input se queda marcado aunque salga de la página de los cocteles...
     }
   }
 };
