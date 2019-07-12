@@ -52,10 +52,10 @@ export default new Vuex.Store({
             });
         })
     },
-    getRelatedCocktails(context) {
+    getRelatedCocktails(context, name) {
       axios
         .get(
-          `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${this.name}`
+          `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${name}`
         )
         .then(res => {
           let cocktails = res.data.drinks

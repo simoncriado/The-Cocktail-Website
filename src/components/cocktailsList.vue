@@ -19,10 +19,10 @@ export default {
   created() {
     // this.$store.dispatch("getAlcoholics");
     // this.$store.dispatch("getNonAlcoholics");
-    if ((this.amount = "all")) {
+    if (this.amount == "all") {
       this.$store.dispatch("getCocktails");
     } else {
-      this.$store.dispatch("getRelatedCocktails");
+      this.$store.dispatch("getRelatedCocktails", this.amount);
     }
   },
   computed: {
