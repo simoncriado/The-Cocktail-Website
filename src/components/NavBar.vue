@@ -36,7 +36,7 @@
         depressed
         fab
         small
-        color="rgb(49, 49, 49)"
+        color="#424242"
         dark
         @click="$router.go(-1)"
       >

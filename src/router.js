@@ -5,6 +5,7 @@ import Cocktails from './views/Cocktails.vue'
 import Spirits from './views/Spirits.vue'
 import SpiritDetail from './views/SpiritDetail.vue'
 import CocktailDetail from './views/CocktailDetail.vue'
+import BarChat from './views/BarChat.vue'
 
 Vue.use(Router)
 
@@ -36,6 +37,11 @@ export default new Router({
       path: '/CocktailDetail/:id',
       name: 'CocktailDetail',
       component: CocktailDetail
+    },
+    {
+      path: '/BarChat',
+      name: 'BarChat',
+      component: BarChat
     },
   ],
   scrollBehavior(to, from, savedPosition) {

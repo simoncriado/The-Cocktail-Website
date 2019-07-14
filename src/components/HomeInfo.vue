@@ -39,13 +39,6 @@ export default {
 </script>
 
 <style>
-.text-xs-center {
-  min-height: 100vh;
-  padding-top: 60px;
-  padding-bottom: 20px;
-  padding-right: 10px;
-  padding-left: 10px;
-}
 .randomImage {
   border: solid;
   border-color: #009688;

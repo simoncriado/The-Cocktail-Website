@@ -23,7 +23,14 @@ export default {
 
 <style>
 .backGround {
-  background-color: rgb(49, 49, 49);
+  background-color: #424242;
   color: white;
+}
+.text-xs-center {
+  min-height: 100vh;
+  padding-top: 70px;
+  padding-bottom: 20px;
+  padding-right: 10px;
+  padding-left: 10px;
 }
 </style>

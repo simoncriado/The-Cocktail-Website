@@ -7,14 +7,14 @@
     <h2>How to prepare:</h2>
     <p>{{cocktailDetails.strInstructions}}</p>
     <h2>Ingredients:</h2>
+    <p>(Click for Details)</p>
     <div>
-      <ul>
-        <li v-for="(ingredient, index) in ingredients" :key="index">
-          <router-link
-            v-bind:to="'/SpiritDetail/' + ingredient"
-          >{{ingredient}} -- {{measures[index]}}</router-link>
-        </li>
-      </ul>
+      <v-btn outline color="#009688" v-for="(ingredient, index) in ingredients" :key="index">
+        <router-link
+          class="links"
+          v-bind:to="'/SpiritDetail/' + ingredient"
+        >{{ingredient}}: {{measures[index]}}</router-link>
+      </v-btn>
     </div>
   </div>
 </template>
@@ -64,4 +64,8 @@ export default {
 </script>
 
 <style>
+.links {
+  text-decoration: none;
+  color: white;
+}
 </style>
