@@ -14,15 +14,24 @@ new Vue({
   store,
   render: h => h(App),
   created() {
-    const firebaseConfig = {
-      apiKey: "AIzaSyBN3CvidvGclAcnU0p6b2kdRYdgErcR35o",
-      authDomain: "the-cocktail-website-8ad30.firebaseapp.com",
-      databaseURL: "https://the-cocktail-website-8ad30.firebaseio.com",
-      projectId: "the-cocktail-website-8ad30",
+    var firebaseConfig = {
+      apiKey: "AIzaSyBsQVJroo_E_mraDp1uCKrOOh86aTiWEN0",
+      authDomain: "the-cocktail-website-4c7ad.firebaseapp.com",
+      databaseURL: "https://the-cocktail-website-4c7ad.firebaseio.com",
+      projectId: "the-cocktail-website-4c7ad",
       storageBucket: "",
-      messagingSenderId: "650927746582",
-      appId: "1:650927746582:web:5532e60fd99a2489"
+      messagingSenderId: "843807089961",
+      appId: "1:843807089961:web:1ad4599914f211bc"
     };
+    // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
+
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        store.commit("GET_USER", user)
+      } else {
+        store.commit("GET_USER", null)
+      }
+    })
   }
 }).$mount('#app')

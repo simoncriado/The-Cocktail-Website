@@ -4,7 +4,13 @@
     <v-img
       :src="`https://www.thecocktaildb.com/images/ingredients/${name}-Medium.png`"
       alt="Cocktail"
-    ></v-img>
+    >
+      <template v-slot:placeholder>
+        <v-layout fill-height align-center justify-center ma-0>
+          <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+        </v-layout>
+      </template>
+    </v-img>
     <h2>Type:</h2>
     <p>{{spiritType}}</p>
     <h2>Description:</h2>

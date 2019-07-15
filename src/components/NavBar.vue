@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-layout wrap>
-      <v-navigation-drawer v-model="drawer" dark fixed temporary>
+      <v-navigation-drawer v-model="drawer" dark fixed right temporary>
         <v-list class="pa-1">
           <v-list-tile avatar>
             <v-list-tile-avatar>
@@ -13,35 +13,41 @@
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
-
         <v-list class="pt-0" dense>
           <v-divider></v-divider>
-
           <v-list-tile v-for="item in items" :key="item.title" :to="item.to">
             <v-list-tile-action>
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-tile-action>
-
             <v-list-tile-content>
               <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list>
+        <v-divider></v-divider>
+        <v-list class="pt-0" dense v-if="this.$store.state.user != null">
+          <v-list-tile v-on:click="logOut">
+            <v-list-tile-action>
+              <v-icon>{{ exit.icon }}</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>{{ exit.title }}</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
       </v-navigation-drawer>
     </v-layout>
     <v-toolbar fixed color="#009688">
-      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+      <v-toolbar-side-icon @click.stop="drawer = !drawer" fixed right></v-toolbar-side-icon>
       <v-btn
         v-if="$route.name != 'home'"
         depressed
-        fab
         small
         color="#424242"
         dark
         @click="$router.go(-1)"
       >
-        <v-icon left>arrow_back</v-icon>
-        <!-- Al poner fab se quita el span "back". No se que estilo me gusta mas... -->
+        <v-icon>arrow_back</v-icon>
         <span>Back</span>
       </v-btn>
     </v-toolbar>
@@ -49,6 +55,7 @@
 </template>
 
 <script>
+import firebase from "firebase";
 export default {
   data() {
     return {
@@ -57,11 +64,23 @@ export default {
         { title: "Home", to: "/", icon: "home" },
         { title: "Cocktails", to: "/Cocktails", icon: "local_bar" },
         { title: "Spirits", to: "/Spirits", icon: "local_drink" },
-        { title: "Bar Chat", to: "/BarChat", icon: "question_answer" }
+        { title: "Bar Chat", to: "/logIn", icon: "question_answer" }
       ],
+      exit: { title: "Log out", icon: "input" },
       mini: true,
       right: null
     };
+  },
+  methods: {
+    logOut() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          this.$store.commit("GET_USER", null);
+          // this.$router.push("/logIn");
+        });
+    }
   }
 };
 </script>
