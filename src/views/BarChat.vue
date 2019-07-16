@@ -5,7 +5,9 @@
     <v-flex>
       <div>
         <div v-for="(city, index) in cities" :key="index">
-          <v-btn block color="#009688" large dark>{{city}}</v-btn>
+          <router-link class="text" v-bind:to="'/chatRoom/' + city">
+            <v-btn block color="#009688" large dark>{{city}}</v-btn>
+          </router-link>
         </div>
       </div>
     </v-flex>
@@ -16,6 +18,7 @@
 export default {
   data() {
     return {
+      name: this.$route.params.name,
       cities: [
         "Barcelona",
         "Madrid",
@@ -31,4 +34,7 @@ export default {
 </script>
 
 <style>
+.text {
+  text-decoration: none;
+}
 </style>

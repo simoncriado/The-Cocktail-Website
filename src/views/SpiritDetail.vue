@@ -42,13 +42,11 @@ export default {
   },
   methods: {
     getSpiritDetails() {
-      console.log("get spirits method");
       axios
         .get(
           `https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${this.name}`
         )
         .then(json => {
-          console.log(json);
           this.spiritName = json.data.ingredients[0].strIngredient;
           // this.spiritType =
           //   json.data.ingredients[0].strType || `No information available`;

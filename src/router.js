@@ -8,6 +8,7 @@ import SpiritDetail from './views/SpiritDetail.vue'
 import CocktailDetail from './views/CocktailDetail.vue'
 import BarChat from './views/BarChat.vue'
 import logIn from './views/logIn.vue'
+import chatRoom from './views/chatRoom.vue'
 
 Vue.use(Router)
 
@@ -46,12 +47,17 @@ const router = new Router({
       path: '/BarChat',
       name: 'BarChat',
       component: BarChat,
-      meta: { requiresAuth: true }
+      // meta: { requiresAuth: true }
     },
     {
       path: '/logIn',
       name: 'logIn',
       component: logIn
+    },
+    {
+      path: '/chatRoom/:name',
+      name: 'chatRoom',
+      component: chatRoom
     },
   ],
   scrollBehavior() {
