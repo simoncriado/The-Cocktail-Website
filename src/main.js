@@ -23,7 +23,6 @@ new Vue({
       messagingSenderId: "843807089961",
       appId: "1:843807089961:web:1ad4599914f211bc"
     };
-    // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
     firebase.auth().onAuthStateChanged(user => {

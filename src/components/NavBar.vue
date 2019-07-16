@@ -73,12 +73,13 @@ export default {
   },
   methods: {
     logOut() {
+      let that = this;
       firebase
         .auth()
         .signOut()
         .then(() => {
-          this.$store.commit("GET_USER", null);
-          // this.$router.push("/logIn");
+          that.$store.commit("GET_USER", null);
+          that.$router.push("/logIn");
         });
     }
   }

@@ -17,8 +17,6 @@ export default {
     return {};
   },
   created() {
-    // this.$store.dispatch("getAlcoholics");
-    // this.$store.dispatch("getNonAlcoholics");
     if (this.amount == "all") {
       this.$store.dispatch("getCocktails");
     } else {

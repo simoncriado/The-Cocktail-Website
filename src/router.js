@@ -11,6 +11,8 @@ import logIn from './views/logIn.vue'
 
 Vue.use(Router)
 
+
+
 const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
@@ -43,7 +45,8 @@ const router = new Router({
     {
       path: '/BarChat',
       name: 'BarChat',
-      component: BarChat
+      component: BarChat,
+      meta: { requiresAuth: true }
     },
     {
       path: '/logIn',
@@ -58,14 +61,32 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  console.log(to.path)
   if (to.path == "/logIn" && store.state.user != null) {
     next("/BarChat")
-  } else {
+  }
+  // else if (to.path == "/BarChat" && store.state.user == null) {
+  //   next("/logIn")
+  // } 
+  else {
     next()
   }
 })
 
+// router.beforeEach((to, from, next) => {
+//   if (to.matched.some(record => record.meta.requiresAuth)) {
+//     // this route requires auth, check if logged in
+//     // if not, redirect to login page.
+//     if (store.state.user != null) {
+//       console.log("Si User");
+
+//       next()
+//     } else {
+//       next("/logIn")
+//     }
+//   } else {
+//     next() // make sure to always call next()!
+//   }
+// })
 
 
 export default router
