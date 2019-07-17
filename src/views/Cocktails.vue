@@ -1,8 +1,8 @@
 <template>
   <div class="text-xs-center">
     <h1>List of Cocktails</h1>
-    <searchBar></searchBar>
-    <cocktailsList amount="all"></cocktailsList>
+    <searchBar class="landScape"></searchBar>
+    <cocktailsList class="landScape" amount="all"></cocktailsList>
     <backToTopButton></backToTopButton>
   </div>
 </template>

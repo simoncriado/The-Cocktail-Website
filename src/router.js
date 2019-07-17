@@ -61,8 +61,11 @@ const router = new Router({
     },
   ],
   scrollBehavior() {
-    return { x: 0, y: 0 }
-    // to DO!!! Mirar que el backToTop sea smooth
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({ x: 0, y: 0 })
+      }, 0)
+    })
   }
 })
 

@@ -2,21 +2,22 @@
   <div class="text-xs-center">
     <h1>{{spiritName}}</h1>
     <v-img
+      class="randomImage2"
       :src="`https://www.thecocktaildb.com/images/ingredients/${name}-Medium.png`"
       alt="Cocktail"
     >
-      <template v-slot:placeholder>
+      <!-- <template v-slot:placeholder>
         <v-layout fill-height align-center justify-center ma-0>
           <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
         </v-layout>
-      </template>
+      </template>-->
     </v-img>
     <h2>Type:</h2>
     <p>{{spiritType}}</p>
     <h2>Description:</h2>
-    <p>{{spiritDescription}}</p>
+    <p class="landScape">{{spiritDescription}}</p>
     <h2>Related Cocktails:</h2>
-    <cocktailsList :amount="name"></cocktailsList>
+    <cocktailsList class="landScape" :amount="name"></cocktailsList>
     <backToTopButton></backToTopButton>
   </div>
 </template>
@@ -73,4 +74,8 @@ export default {
 </script>
 
 <style>
+.randomImage2 {
+  width: 40%;
+  margin: auto;
+}
 </style>

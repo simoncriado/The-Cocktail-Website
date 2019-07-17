@@ -1,7 +1,9 @@
 <template>
   <div class="text-xs-center">
     <h1>The Cocktail Website</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent interdum pharetra nulla, at tristique nulla tempus sed. Quisque maximus sed ipsum non vestibulum. Pellentesque vel ex lobortis, aliquet augue ut, luctus nunc. Sed consequat libero sed nibh ullamcorper, id facilisis lorem finibus. Fusce nibh mi, hendrerit et bibendum in, lobortis ut ligula. Fusce a ornare magna. Nam id tellus id libero semper gravida. Nulla ut est risus. Vivamus blandit auctor ex at elementum. Vivamus est erat, aliquam in blandit nec, mattis vel urna. Suspendisse eu felis ex. Aliquam purus est, fringilla quis consectetur sit amet, placerat a nunc. Phasellus interdum pretium blandit.</p>
+    <p
+      class="landScape"
+    >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent interdum pharetra nulla, at tristique nulla tempus sed. Quisque maximus sed ipsum non vestibulum. Pellentesque vel ex lobortis, aliquet augue ut, luctus nunc. Sed consequat libero sed nibh ullamcorper, id facilisis lorem finibus. Fusce nibh mi, hendrerit et bibendum in, lobortis ut ligula. Fusce a ornare magna. Nam id tellus id libero semper gravida. Nulla ut est risus. Vivamus blandit auctor ex at elementum. Vivamus est erat, aliquam in blandit nec, mattis vel urna. Suspendisse eu felis ex. Aliquam purus est, fringilla quis consectetur sit amet, placerat a nunc. Phasellus interdum pretium blandit.</p>
     <h2>Random Cocktail of the day!</h2>
     <p>(Click on the image for details)</p>
     <v-btn small v-on:click="reloadButton" color="#009688" fab>
@@ -44,5 +46,15 @@ export default {
   border-color: #009688;
   border-width: 2px;
   border-radius: 5px;
+}
+@media (orientation: landscape) {
+  .randomImage {
+    width: 40%;
+    margin: auto;
+  }
+  .landScape {
+    margin: auto;
+    width: 80%;
+  }
 }
 </style>

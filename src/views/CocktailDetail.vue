@@ -5,10 +5,10 @@
     <h2>Type of Glass:</h2>
     <p>{{cocktailDetails.strGlass}}</p>
     <h2>How to prepare:</h2>
-    <p>{{cocktailDetails.strInstructions}}</p>
+    <p class="landScape">{{cocktailDetails.strInstructions}}</p>
     <h2>Ingredients:</h2>
     <p>(Click for Details)</p>
-    <div>
+    <div class="landScape">
       <v-btn outline color="#009688" v-for="(ingredient, index) in ingredients" :key="index">
         <router-link
           class="links"

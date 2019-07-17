@@ -1,5 +1,5 @@
 <template>
-  <div class="text-xs-center chatting" xs12 sm6>
+  <div class="text-xs-center chatting" xs12 sm6 lg8>
     <h1>
       Chatting in
       <span class="city">{{id}}</span>
@@ -137,7 +137,6 @@ export default {
 .button {
   display: inline-block;
   vertical-align: 5px;
-  width: 20%;
 }
 .userName {
   font-weight: bold;
@@ -145,14 +144,26 @@ export default {
 }
 .user1 {
   text-align: right;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 .user2 {
   text-align: left;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 .box {
   margin-right: 5px;
   margin-left: 5px;
   padding-top: 10px;
   /* moment JS */
+}
+@media (orientation: landscape) {
+  .chat {
+    height: 150px;
+  }
+  .chatting {
+    overflow: hidden;
+  }
 }
 </style>
