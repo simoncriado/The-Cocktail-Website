@@ -1,13 +1,23 @@
 <template>
   <div class="text-xs-center chatting" xs12 sm6>
-    <h1>Chatting in {{id}}</h1>
-    <div class="chat">
-      <div id="posts" class="box" wrap v-for="(chat, key, index) in chats" :key="index">
-        <span>
-          {{chat.name}}:
-          <br />
-          {{chat.text}}
-        </span>
+    <h1>
+      Chatting in
+      <span class="city">{{id}}</span>
+    </h1>
+    <div id="chat" class="chat">
+      <div>
+        <div id="posts" class="box" wrap v-for="(chat, key, index) in chats" :key="index">
+          <div class="user1" v-if="chat.name == $store.state.user.displayName">
+            <span class="userName">{{chat.name}}</span>
+            <br />
+            <span>{{chat.text}}</span>
+          </div>
+          <div class="user2" v-else>
+            <span class="userName">{{chat.name}}</span>
+            <br />
+            <span>{{chat.text}}</span>
+          </div>
+        </div>
       </div>
     </div>
     <div>
@@ -44,7 +54,8 @@ export default {
     return {
       id: this.$route.params.name,
       textInput: "",
-      chats: {}
+      chats: {},
+      firstTime: true
     };
   },
   methods: {
@@ -55,14 +66,15 @@ export default {
         text,
         name
       };
-
-      firebase
-        .database()
-        .ref(this.id)
-        .push(object);
-      this.textInput = "";
+      //   Sólo sube el nuevo mensaje si el input NO está vacio
+      if (text != "") {
+        firebase
+          .database()
+          .ref(this.id)
+          .push(object);
+        this.textInput = "";
+      }
     },
-
     getPosts() {
       let that = this;
       firebase
@@ -71,16 +83,33 @@ export default {
         .on("value", function(data) {
           var messages = data.val();
           that.chats = messages;
+          let container = document.getElementById("chat");
+          if (that.firstTime) {
+            setTimeout(() => {
+              container.scrollTop = container.scrollHeight;
+              that.firstTime = false;
+            }, 0);
+          } else {
+            setTimeout(() => {
+              container.scrollTo({
+                top: container.scrollHeight,
+                behavior: "smooth"
+              });
+            }, 200);
+          }
         });
     }
   },
-  created() {
+  mounted() {
     this.getPosts();
   }
 };
 </script>
 
 <style scoped>
+.city {
+  color: #009688;
+}
 .chatting {
   position: fixed;
   overflow-y: scroll;
@@ -98,23 +127,32 @@ export default {
   border-color: #009688;
   border-width: 2px;
   border-radius: 5px;
+  overflow-wrap: break-word;
 }
 .inputs {
-  width: 80%;
   display: inline-block;
+  width: 80%;
+  left: 10px;
 }
 .button {
   display: inline-block;
+  vertical-align: 5px;
   width: 20%;
 }
-.box span {
-  background-color: #009688;
+.userName {
+  font-weight: bold;
+  color: #009688;
+}
+.user1 {
+  text-align: right;
+}
+.user2 {
+  text-align: left;
 }
 .box {
   margin-right: 5px;
   margin-left: 5px;
-  text-align: left;
-  padding-top: 5 px;
-  /* por qué no funciona el margin top? */
+  padding-top: 10px;
+  /* moment JS */
 }
 </style>
