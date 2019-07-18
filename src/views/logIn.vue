@@ -24,7 +24,7 @@ export default {
       var provider = new firebase.auth.GoogleAuthProvider();
       firebase
         .auth()
-        .signInWithRedirect(provider)
+        .signInWithPopup(provider)
         .then(() => {
           that.$router.push("/BarChat");
         });
