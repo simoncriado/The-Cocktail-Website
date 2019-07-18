@@ -6,7 +6,7 @@
       <v-btn block color="#009688" large dark v-on:click="logIn()">Register</v-btn>
     </div>-->
     <h3>Log in with your Google account</h3>
-    <div>
+    <div class="cities">
       <v-btn block color="#009688" large dark v-on:click="logIn()">Log-In</v-btn>
     </div>
   </div>
