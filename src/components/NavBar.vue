@@ -38,7 +38,12 @@
       </v-navigation-drawer>
     </v-layout>
     <v-toolbar fixed color="#009688">
-      <v-toolbar-side-icon @click.stop="drawer = !drawer" fixed right></v-toolbar-side-icon>
+      <v-toolbar-side-icon
+        style="margin:0px; color:#424242"
+        @click.stop="drawer = !drawer"
+        fixed
+        right
+      ></v-toolbar-side-icon>
       <v-btn
         v-if="$route.name != 'home'"
         depressed

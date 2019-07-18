@@ -41,20 +41,4 @@ export default {
 </script>
 
 <style>
-.randomImage {
-  border: solid;
-  border-color: #009688;
-  border-width: 2px;
-  border-radius: 5px;
-}
-@media (orientation: landscape) {
-  .randomImage {
-    width: 40%;
-    margin: auto;
-  }
-  .landScape {
-    margin: auto;
-    width: 80%;
-  }
-}
 </style>

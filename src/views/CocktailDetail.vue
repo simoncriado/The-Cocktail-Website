@@ -8,7 +8,7 @@
     <p class="landScape">{{cocktailDetails.strInstructions}}</p>
     <h2>Ingredients:</h2>
     <p>(Click for Details)</p>
-    <div class="landScape">
+    <div class="landScape ingredients">
       <v-btn outline color="#009688" v-for="(ingredient, index) in ingredients" :key="index">
         <router-link
           class="links"
@@ -64,6 +64,9 @@ export default {
 </script>
 
 <style>
+.ingredients {
+  text-align: center;
+}
 .links {
   text-decoration: none;
   color: white;
