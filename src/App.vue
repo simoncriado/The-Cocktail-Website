@@ -41,15 +41,25 @@ export default {
   border-color: #009688;
   border-width: 2px;
   border-radius: 5px;
+  margin-bottom: 15px;
+  margin-top: 15px;
 }
 @media (orientation: landscape) {
   .randomImage {
     width: 40%;
     margin: auto;
+    margin-bottom: 15px;
+    margin-top: 15px;
   }
   .landScape {
     margin: auto;
     width: 80%;
+  }
+  .randomImage2 {
+    width: 40%;
+    margin: auto;
+    margin-bottom: 15px;
+    margin-top: 15px;
   }
 }
 </style>

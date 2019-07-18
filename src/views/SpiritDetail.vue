@@ -75,7 +75,7 @@ export default {
 
 <style>
 .randomImage2 {
-  width: 40%;
-  margin: auto;
+  margin-bottom: 15px;
+  margin-top: 15px;
 }
 </style>
