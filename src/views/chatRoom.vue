@@ -112,7 +112,7 @@ export default {
 }
 .chatting {
   position: fixed;
-  overflow-y: scroll;
+  overflow-y: auto;
   top: 0;
   right: 0;
   bottom: 0;
