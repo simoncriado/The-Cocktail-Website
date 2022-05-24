@@ -120,7 +120,7 @@ export default {
 }
 .chat {
   height: 430px;
-  overflow: scroll;
+  overflow: auto;
   margin-top: 10px;
   margin-bottom: 5px;
   border: solid;
