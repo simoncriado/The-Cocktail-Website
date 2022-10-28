@@ -1,29 +1,15 @@
-# mobile_app
+# The Cocktail Website
 
-## Project setup
-```
-npm install
-```
+Project done during the bootcamp I did back in 2019. This project had to be an own creation from the design part, through the developing process until the final deployment. Key project functionalities:
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+  - Information about cocktails and spirits for non-registered users.
+  - Login functionality to have access to the extra feature: the chat rooms to chat with other cocktail-lovers.
+  - Search-bar.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Tech used
 
-### Run your tests
-```
-npm run test
-```
+HTML, CSS, Vue and Firebase.
 
-### Lints and fixes files
-```
-npm run lint
-```
+## You can visit the website by clicking the link below
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+[The Cocktail Website](https://the-cocktail-website.netlify.app)
